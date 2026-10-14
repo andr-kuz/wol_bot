@@ -1,5 +1,5 @@
-python-dotenv
-python-telegram-bot
-wakeonlan
-ping3
-requests
+python-dotenv==1.2.4
+python-telegram-bot[socks]==21.10
+requests==2.34.2
+wakeonlan==4.0.0
+ping3==5.1.6

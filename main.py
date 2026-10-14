@@ -4,7 +4,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 from wakeonlan import send_magic_packet
 from ping3 import ping
 import asyncio
-from config import BOT_TOKEN, TARGET_IP, TARGET_MAC, USER_ID
+from config import BOT_TOKEN, TARGET_IP, TARGET_MAC, USER_ID, PROXY
 
 async def check_machine_status(context, chat_id):
     await context.bot.send_message(chat_id, f"Trying to wake up {TARGET_IP}...")
@@ -49,7 +49,7 @@ async def is_online(chat_id: int, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Create the Application and pass it your bot's token
-    application = Application.builder().token(BOT_TOKEN).build()
+    application = Application.builder().token(BOT_TOKEN).proxy(PROXY).get_updates_proxy(PROXY).build()
 
     # Add command handler for /wol
     application.add_handler(CommandHandler("start", start_command))
